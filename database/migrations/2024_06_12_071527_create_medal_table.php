@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('medal', function (Blueprint $table) {
             $table->id();
+            $table->name(string);
             $table->timestamps();
         });
     }
