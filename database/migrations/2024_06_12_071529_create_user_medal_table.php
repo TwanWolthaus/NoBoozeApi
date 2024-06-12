@@ -12,7 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_medal', function (Blueprint $table) {
-            $table->id();
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('medal_id');
+            $table->foreign('medal_id')->references('id')->on('medal')->onDelete('cascade');
+            $table->timestamp('date_achieved')->default(DB::raw('CURRENT_TIMESTAMP'));
+
             $table->timestamps();
         });
     }
