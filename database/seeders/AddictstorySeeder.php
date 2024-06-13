@@ -24,7 +24,7 @@ class AddictstorySeeder extends Seeder
         for ($i = 0; $i < $numberOfStories; $i++) {
             DB::table('addictstories')->insert([
                 'name' => $faker->name,
-                'story' => $faker->paragraph, // Generates a paragraph of text
+                'story' => $faker->text(1023), // Generates text with 1023 characters
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
