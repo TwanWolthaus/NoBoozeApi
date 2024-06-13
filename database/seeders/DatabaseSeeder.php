@@ -14,6 +14,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         
-    }
+    } // hey als het goed is het nu gefixt, sending away my push request now!
 }
 
