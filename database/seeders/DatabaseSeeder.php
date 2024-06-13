@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
             AddictstorySeeder::class,
             UserMedalSeeder::class,
         ]);
-    }
+    } 
 }
 
