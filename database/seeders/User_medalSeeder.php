@@ -25,6 +25,7 @@ class UserMedalSeeder extends Seeder
             DB::table('user_medals')->insert([
                 'user_id' => $userIDs[array_rand($userIDs)],
                 'medal_id' => $medalIDs[array_rand($medalIDs)],
+                'date_achieved' => now(),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
