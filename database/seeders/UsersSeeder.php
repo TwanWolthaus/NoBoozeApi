@@ -23,13 +23,13 @@ class UsersSeeder extends Seeder
         // Generate fake data and insert it into the database
         for ($i = 0; $i < $numberOfUsers; $i++) {
             DB::table('users')->insert([
-                'user_name' => $faker->name,
+                'user_name' => $faker->unique()->name,
                 'email' => $faker->unique()->safeEmail,
                 'password' => bcrypt('password'), // bcrypt is used for hashing passwords
-                'isAdmin' => $faker->boolean,
-                'moneySaved' => $faker->randomFloat(2, 0, 10000), // float with 2 decimal places, range 0-10000
-                'originalMotivation' => $faker->sentence,
-                'dryDays' => $faker->numberBetween(0, 365),
+                'is_admin' => $faker->boolean,
+                'money_saved' => $faker->randomFloat(2, 0, 10000), // float with 2 decimal places, range 0-10000
+                'original_motivation' => $faker->sentence,
+                'dry_days' => $faker->numberBetween(0, 365),
                 'streak' => $faker->numberBetween(0, 100),
                 'created_at' => now(),
                 'updated_at' => now(),
