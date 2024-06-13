@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         // Call all the necessary seeders
         $this->call([
             UsersSeeder::class,
-            MedalsSeeder::class,
+            MedalSeeder::class,
             AddictstorySeeder::class,
             UserMedalSeeder::class,
         ]);
