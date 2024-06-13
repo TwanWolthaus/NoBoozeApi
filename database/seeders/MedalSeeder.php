@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class MedalsSeeder extends Seeder
+class MedalSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class MedalsSeeder extends Seeder
     public function run(): void
     {
         // Insert specific sample data into the medals table
-        DB::table('medals')->insert([
+        DB::table('medal')->insert([
             [
                 'name' => 'Gold Medal',
                 'description' => 'Awarded for outstanding performance.',

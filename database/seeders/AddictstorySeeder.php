@@ -22,9 +22,9 @@ class AddictstorySeeder extends Seeder
 
         // Generate fake data and insert it into the database
         for ($i = 0; $i < $numberOfStories; $i++) {
-            DB::table('addictstories')->insert([
+            DB::table('addictstory')->insert([
                 'name' => $faker->name,
-                'story' => $faker->paragraph, // Generates a paragraph of text
+                'story' => $faker->paragraph,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
