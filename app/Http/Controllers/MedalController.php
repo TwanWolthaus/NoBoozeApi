@@ -28,9 +28,15 @@ class MedalController
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function showById(string $id)
     {
         $medal = Medal::findOrFail($id);
+        return response()->json($medal);  
+    }
+
+    public function showByName(string $name)
+    {
+        $medal = Medal::where('name', $name)->first();
         return response()->json($medal);  
     }
 

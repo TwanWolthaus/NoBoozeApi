@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Addictstory;
+
 class AddictstoryController
 {
     /**
@@ -11,7 +13,8 @@ class AddictstoryController
      */
     public function index()
     {
-        //
+        $addictstories = Addictstory::all();
+        return response()->json($addictstories);   
     }
 
     /**
@@ -25,9 +28,10 @@ class AddictstoryController
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function showById(string $id)
     {
-        //
+        $addictstory = Addictstory::findOrFail($id);
+        return response()->json($addictstory);  
     }
 
     /**
