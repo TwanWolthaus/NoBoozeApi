@@ -30,6 +30,11 @@ class UserController
         //
     }
 
+    public function extract(string $id)
+    {
+        //
+    }
+
     /**
      * Update the specified resource in storage.
      */
