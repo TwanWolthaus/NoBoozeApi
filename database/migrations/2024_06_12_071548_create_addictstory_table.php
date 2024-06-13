@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('addictstory', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name', 20)->nullable()->default('anonymous');
+            $table->string('name', 30)->nullable()->default('anonymous');
             $table->string('story', 1023);
 
             $table->timestamps();
