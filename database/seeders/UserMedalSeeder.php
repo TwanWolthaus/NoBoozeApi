@@ -15,14 +15,14 @@ class UserMedalSeeder extends Seeder
     {
         // Fetch all user IDs and medal IDs
         $userIDs = DB::table('users')->pluck('id')->toArray();
-        $medalIDs = DB::table('medals')->pluck('id')->toArray();
+        $medalIDs = DB::table('medal')->pluck('id')->toArray();
 
         // Number of fake user-medal relationships to create
         $numberOfUserMedals = 50;
 
         // Generate fake data and insert it into the database
         for ($i = 0; $i < $numberOfUserMedals; $i++) {
-            DB::table('user_medals')->insert([
+            DB::table('user_medal')->insert([
                 'user_id' => $userIDs[array_rand($userIDs)],
                 'medal_id' => $medalIDs[array_rand($medalIDs)],
                 'date_achieved' => now(),
