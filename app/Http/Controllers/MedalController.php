@@ -4,22 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class MedalController extends Controller
+use App\Models\Medal;
+
+class MedalController
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $medals = Medal::all();
+        return response()->json($medals);    
     }
 
     /**
@@ -35,15 +30,8 @@ class MedalController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        $medal = Medal::findOrFail($id);
+        return response()->json($medal);  
     }
 
     /**
