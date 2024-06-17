@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+
+
+use App\Models\User;
 
 
 class AuthController
@@ -21,8 +25,6 @@ class AuthController
             return response()->json($validator->errors(), 400);
         }
 
-        dd($validator);
-
         $user = User::create([
             'user_name' => $request->user_name,
             'email' => $request->email,
@@ -34,6 +36,25 @@ class AuthController
         return response()->json($reponse, 200);
     }
 
+    public function login(Request $request) {
 
-    
+        $rules= [
+            'email'=> 'required|string',
+            'password' => 'required|string'
+        ];
+
+        $request->validate($rules);
+
+        $user = User::where('email', $request->email)->first();
+        
+        if($user && Hash::check($request->password, $user->password)) {
+            $token = $user->createToken('Personal Access Token')->plainTextToken;
+            $reponse=['user'=>$user, 'token'=>$token];
+            return response()->json($reponse, 200);
+        }
+
+        $reponse = ['message' => 'Incorrect email or password'];
+        return response()->json($reponse, 400);
+    }
+
 }

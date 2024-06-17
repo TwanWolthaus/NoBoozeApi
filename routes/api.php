@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MedalController;
 use App\Http\Controllers\AddictstoryController;
+use App\Http\Controllers\AuthController;
 
 
 
