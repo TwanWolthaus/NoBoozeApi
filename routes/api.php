@@ -8,6 +8,10 @@ use App\Http\Controllers\AddictstoryController;
 
 
 
+Route::post('/auth/register', [AuthController::class, 'register']);
+Route::post('/auth/login', [AuthController::class, 'login']);
+
+
 // ->middleware('auth:sanctum')
 Route::prefix('user')->group(function () {
     Route::get('/', [UserController::class, 'show']);
