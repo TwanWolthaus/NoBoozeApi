@@ -7,6 +7,8 @@ use App\Http\Controllers\MedalController;
 use App\Http\Controllers\AddictstoryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserMedalController;
+
 
 
 Route::prefix('auth')->group(function () {
@@ -15,12 +17,16 @@ Route::prefix('auth')->group(function () {
 });
 
 
-// ->middleware('auth:sanctum')
+Route::prefix('userMedals')->group(function () {
+    Route::post('/store', [UserMedalController::class, 'store']);
+});
+
+
 Route::prefix('users')->group(function () {
     Route::get('/show/{id}', [UserController::class, 'show']);
     Route::get('/showMedals/{id}', [UserController::class, 'showMedals']);
     Route::put('/update/{id}', [UserController::class, 'update']);
-    Route::delete('/show', [UserController::class, 'delete']);
+    // Route::delete('/show', [UserController::class, 'delete']);
 
     Route::get('/medals', [UserController::class, 'showMedals']);
 });

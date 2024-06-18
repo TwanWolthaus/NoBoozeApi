@@ -14,6 +14,11 @@ class UserMedal extends Model
 
     protected $table = 'user_medal';
 
+    protected $fillable = [
+        'user_id',
+        'medal_id',
+    ];
+
 
     public function user(): HasOne
     {
