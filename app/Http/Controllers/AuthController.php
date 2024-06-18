@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
+use App\Http\Controllers\UserMedalController;
+
 
 use App\Models\User;
 
@@ -48,6 +50,9 @@ class AuthController
         $user = User::where('email', $request->email)->first();
         
         if($user && Hash::check($request->password, $user->password)) {
+
+            $newMedal = (new UserMedalController)->reevaluateStreak($user->id);
+
             $token = $user->createToken('Personal Access Token')->plainTextToken;
             $reponse=['user'=>$user, 'token'=>$token];
             return response()->json($reponse, 200);
