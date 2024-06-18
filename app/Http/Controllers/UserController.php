@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserMedal;
+
 use Illuminate\Support\Facades\Validator;
 
 
@@ -30,7 +32,17 @@ class UserController
      */
     public function show(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return response()->json($user);
+    }
+
+    public function showMedals(string $id)
+    {
+        $user = User::findOrFail($id);
+        $medals = $user->userMedals->map(function (UserMedal $user_medal) {
+            return $user_medal->medal;
+        });
+        return response()->json($medals);
     }
 
     public function extract(string $id)

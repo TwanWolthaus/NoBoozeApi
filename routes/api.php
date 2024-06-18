@@ -17,8 +17,10 @@ Route::prefix('auth')->group(function () {
 
 // ->middleware('auth:sanctum')
 Route::prefix('users')->group(function () {
+    Route::get('/show/{id}', [UserController::class, 'show']);
+    Route::get('/showMedals/{id}', [UserController::class, 'showMedals']);
     Route::put('/update/{id}', [UserController::class, 'update']);
-    Route::delete('/', [UserController::class, 'delete']);
+    Route::delete('/show', [UserController::class, 'delete']);
 
     Route::get('/medals', [UserController::class, 'showMedals']);
 });
