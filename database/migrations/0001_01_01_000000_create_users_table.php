@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
+            // mail twanwolthaus@gmail.com om te discusseren wat je favouriete disneyfilm is.
             $table->id();
             $table->string('user_name')->unique();
             $table->string('email')->unique();

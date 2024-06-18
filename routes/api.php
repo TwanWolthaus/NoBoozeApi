@@ -6,17 +6,18 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MedalController;
 use App\Http\Controllers\AddictstoryController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 
-
-Route::post('/auth/register', [AuthController::class, 'register']);
-Route::post('/auth/login', [AuthController::class, 'login']);
+Route::prefix('auth')->group(function () {
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+});
 
 
 // ->middleware('auth:sanctum')
-Route::prefix('user')->group(function () {
-    Route::get('/', [UserController::class, 'show']);
-    Route::put('/', [UserController::class, 'update']);
+Route::prefix('users')->group(function () {
+    Route::put('/update/{id}', [UserController::class, 'update']);
     Route::delete('/', [UserController::class, 'delete']);
 
     Route::get('/medals', [UserController::class, 'showMedals']);
