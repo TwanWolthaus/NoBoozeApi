@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schedule;
  
-Schedule::call(function () {
-    DB::table('recent_users')->delete();
-})->daily();
+$schedule->call(function () {
+    DB::table('users')->increment('streak');
+    DB::table('users')->increment('dry_days');
+})->everyMinute();

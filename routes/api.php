@@ -25,9 +25,9 @@ Route::prefix('userMedals')->group(function () {
 Route::prefix('users')->group(function () {
     Route::get('/show/{id}', [UserController::class, 'show']);
     Route::get('/showMedals/{id}', [UserController::class, 'showMedals']);
-    Route::put('/update/{id}', [UserController::class, 'update']);
-    // Route::delete('/show', [UserController::class, 'delete']);
 
+    // When sent partial data, this PUT request is handled as a PATCH request.
+    Route::put('/update/{id}', [UserController::class, 'update']);
     Route::get('/medals', [UserController::class, 'showMedals']);
 });
 
